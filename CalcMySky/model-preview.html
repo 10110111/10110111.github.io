@@ -29,7 +29,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.0.1-346-gdbed717</span>
+   &#160;<span id="projectnumber">v0.0.1-347-g684d8ec</span>
    </div>
   </td>
  </tr>
@@ -157,7 +157,7 @@ Sunrise viewed from 50 km altitude</div></div>
 <p>Single scattering layers contain radiance from first-order scattering on the constituents of the atmosphere. This radiance is stored in separate textures, and is only controlled by this checkbox if the values haven't been merged into multiple scattering texture (see <a href="model-generation.html#phase-function-type"><code>phase function type</code> parameter</a> in atmosphere description file).</p>
 <p>This option has sub-options corresponding to each separate single scattering layer. This lets one check how much light is scattered by each of these constituents. But note that enabling or disabling these sub-options only affects incoming radiance, it doesn't affect transmittance of the atmosphere. Enabling or disabling these layers is not the same as enabling or disabling a constituent of the atmosphere.</p>
 <h3>Draw multiple scattering layer</h3>
-<p>This layer contains radiance from scattering orders higher than 1, and additionally the first-order scattering by the species whose phase function was marked as smooth (see <a href="model-generation.html#phase-function-type"><code>phase function type</code> parameter</a> in atmosphere description file).</p>
+<p>This layer contains radiance from scattering orders higher than 1, and additionally the first-order scattering by the species whose <a href="single-multiple-scattering.html#phase-function">phase function</a> was marked as smooth (see <a href="model-generation.html#phase-function-type"><code>phase function type</code> parameter</a> in atmosphere description file).</p>
 <h3>Light pollution luminance</h3>
 <p>Luminance of the ground that results in light pollution. Set to zero to remove light pollution from the scene.</p>
 <h3><a class="anchor" id="solar-spectrum-control"></a>Solar spectrum</h3>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.15"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>CalcMySky: EclipsedDoubleScatteringPrecomputer Class Reference</title>
+<title>CalcMySky: What is CalcMySky</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -68,31 +68,21 @@ $(function() {
 </div>
 
 </div><!-- top -->
-<div class="header">
-  <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="classEclipsedDoubleScatteringPrecomputer-members.html">List of all members</a>  </div>
+<div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">EclipsedDoubleScatteringPrecomputer Class Reference</div>  </div>
+<div class="title">What is CalcMySky </div>  </div>
 </div><!--header-->
 <div class="contents">
-<table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:aec1d4875432aa2c97a1fb07b18c808d8"><td class="memItemLeft" align="right" valign="top"><a id="aec1d4875432aa2c97a1fb07b18c808d8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EclipsedDoubleScatteringPrecomputer</b> (QOpenGLShaderProgram &amp;program, QOpenGLFunctions_3_3_Core &amp;gl, GLuint intermediateTextureName, GLuint intermediateTextureTexUnitNum, <a class="el" href="structAtmosphereParameters.html">AtmosphereParameters</a> const &amp;atmo, unsigned texSizeByViewAzimuth, unsigned texSizeByViewElevation, unsigned texSizeBySZA, unsigned texSizeByAltitude)</td></tr>
-<tr class="separator:aec1d4875432aa2c97a1fb07b18c808d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a398b7e7ccfc8a2766fee698b532bee9d"><td class="memItemLeft" align="right" valign="top"><a id="a398b7e7ccfc8a2766fee698b532bee9d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>compute</b> (unsigned altIndex, unsigned szaIndex, double cameraAltitude, double sunZenithAngle, double moonZenithAngle, double moonAzimuthRelativeToSun, double earthMoonDistance)</td></tr>
-<tr class="separator:a398b7e7ccfc8a2766fee698b532bee9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaba768f2ed33e89ebde860bd06b8acf7"><td class="memItemLeft" align="right" valign="top"><a id="aaba768f2ed33e89ebde860bd06b8acf7"></a>
-std::vector&lt; glm::vec4 &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>texture</b> () const</td></tr>
-<tr class="separator:aaba768f2ed33e89ebde860bd06b8acf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<hr/>The documentation for this class was generated from the following files:<ul>
-<li>common/<a class="el" href="EclipsedDoubleScatteringPrecomputer_8hpp_source.html">EclipsedDoubleScatteringPrecomputer.hpp</a></li>
-<li>common/EclipsedDoubleScatteringPrecomputer.cpp</li>
+<div class="textblock"><p>CalcMySky is a software package that simulates scattering of light by the atmosphere to render daytime and twilight skies (without stars). Its primary purpose is to enable realistic view of the sky in applications such as planetaria. Secondary objective is to make it possible to explore atmospheric effects such as glories, fogbows etc., as well as simulate unusual environments such as on Mars or an exoplanet orbiting a star with a non-solar spectrum of radiation.</p>
+<p>The simulation is based on E. Bruneton's <a href="https://hal.inria.fr/inria-00288758/en">Precomputed Atmospheric Scattering</a> paper and the <a href="https://ebruneton.github.io/precomputed_atmospheric_scattering">updated implementation of the demo</a>. This in particular limits the atmosphere to spherical symmetry (which means localized clouds are not supported, and ground albedo is the same all around the globe).</p>
+<p>An additional capability is simulation of solar eclipses, which is currently limited to two <a href="single-multiple-scattering.html#scattering-order">scattering orders</a>, while the non-eclipsed atmosphere can be simulated to arbitrary order.</p>
+<p>This package consists of three parts:</p>
+<ul>
+<li><code>calcmysky</code> utility that does the precomputation of the atmosphere model to enable rendering,</li>
+<li><code>libShowMySky</code> library that lets the applications render the atmosphere model,</li>
+<li><code>ShowMySky</code> preview GUI that makes it possible to preview the rendering of the atmosphere model and examine its properties. </li>
 </ul>
+</div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

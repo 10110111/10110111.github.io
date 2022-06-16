@@ -29,7 +29,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.0.1-346-gdbed717</span>
+   &#160;<span id="projectnumber">v0.0.1-347-g684d8ec</span>
    </div>
   </td>
  </tr>
@@ -231,7 +231,7 @@ Save intermediate light pollution textures. </li>
 <h4><a class="anchor" id="scatterer-number-density"></a><code>number density</code></h4>
 <p>This entry is a <a href="#code-blocks">code block</a>. It defines number density of the scatterer being described in the current section. This code block is used as the implementation of a GLSL function that has a <code>float</code> parameter called <code>altitude</code>, with a value in meters, and returns a <code>float</code> value of number density in \(\mathrm m^{-3}\).</p>
 <h4><code>phase function</code></h4>
-<p>This entry is a <a href="#code-blocks">code block</a>. It takes a <code>float</code> parameter called <code>dotViewSun</code>, and returns <code>vec4</code> relative intensity, where each component of <code>vec4</code> corresponds to wavelength in corresponding component of the global <code>vec4</code> variable <code>wavelengths</code>.</p>
+<p>This entry is a <a href="#code-blocks">code block</a> that computes the <a href="single-multiple-scattering.html#phase-function">phase function</a> of the current scatterer. It takes a <code>float</code> parameter called <code>dotViewSun</code>, and returns <code>vec4</code> relative intensity, where each component of <code>vec4</code> corresponds to wavelength in corresponding component of the global <code>vec4</code> variable <code>wavelengths</code>.</p>
 <p>Mathematically, the parameter is cosine of the angle between the incoming ray and the scattered ray. Each component of the output <code>vec4</code> (let's call \( i\)th component \(f_i\)) must be normalized by the following condition:</p>
 <p class="formulaDsp">
 \begin{equation} \int_{0}^{2\pi}\mathrm{d}\varphi \int_{0}^{\pi} \mathrm{d}\theta \sin(\theta) f_i(\theta)=1. \end{equation}
