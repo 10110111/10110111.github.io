@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.0.1-350-g16bbacd</span>
+   &#160;<span id="projectnumber">v0.0.1-379-gf44ecb0</span>
    </div>
   </td>
  </tr>
@@ -165,10 +165,12 @@ Save intermediate light pollution textures. </li>
 <p>There are several ways to specify a spectrum:</p>
 <ol type="1">
 <li>A list of numbers, which can be in normal or scientific format, separated with commas. Each list item must correspond to a particular wavelength from the <code>wavelengths</code> entry. Example of such spectrum: <div class="fragment"><div class="line">solar irradiance at TOA: 1.037, 1.249, 1.684, 1.975, 1.968, 1.877, 1.854, 1.818, 1.723, 1.604, 1.516, 1.408, 1.309, 1.23, 1.142, 1.062</div></div><!-- fragment --></li>
-<li>A file path prepended with <code>"file "</code>. Here the spectrum may be sampled at any points, it will be resampled to match <code>wavelengths</code> automatically. Example: <div class="fragment"><div class="line">solar irradiance at TOA: file spectra/solar-irradiance-at-toa.csv</div></div><!-- fragment --></li>
+<li>A file path prepended with <code>"file "</code>. The format is described in <a href="#spectrum-format">Spectrum file format</a> section. Here the spectrum may be sampled at any points, it will be resampled to match <code>wavelengths</code> automatically. Example: <div class="fragment"><div class="line">solar irradiance at TOA: file spectra/solar-irradiance-at-toa.csv</div></div><!-- fragment --></li>
 <li>Spectra from several files added together with weighting coefficients. A filename must be prepended with <code>"weighted file "</code>, and each new such entry accumulates the new values in the corresponding spectrum. Example: <div class="fragment"><div class="line">ground albedo: weighted file 0.8 spectra/ground-albedo-grass.csv</div><div class="line">ground albedo: weighted file 0.2 spectra/ground-albedo-snow.csv</div></div><!-- fragment --></li>
 </ol>
-<h3><a class="anchor" id="sections"></a>Sections</h3>
+<h3><a class="anchor" id="spectrum-format"></a>Spectrum file format</h3>
+<p>Spectrum files are CSV (Comma-Separated Values) tables with two columns. Each line corresponds to one spectral point: first column specifies wavelength in nanometers, second column holds value. Empty lines are ignored.</p>
+<p>Example of a spectrum from \(400\,\mathrm{nm}\) to \(700\,\mathrm{nm}\) with \(100\,\mathrm{nm}\) interval: </p><div class="fragment"><div class="line">400,0.2342</div><div class="line">500,0.8134</div><div class="line">600,0.478</div><div class="line">700,1.235</div></div><!-- fragment --><h3><a class="anchor" id="sections"></a>Sections</h3>
 <p>A section begins on the next line after the key, the colon character remains on the line with the key.</p>
 <p>Top-level sections are bounded by an opening brace "{" and a closing brace "}". Between braces there can be multiple key-value entries.</p>
 <p>Example of a section: </p><pre class="fragment">Some section:
@@ -246,7 +248,7 @@ Save intermediate light pollution textures. </li>
 <li><code>smooth</code> — a kind of phase function that doesn't need a high resolution texture to be represented well. This lets the single scattering texture to be merged into the multiple scattering texture, thus avoiding the need for extra storage.</li>
 </ul>
 <h4><code>cross section at 1 um</code></h4>
-<p>This entry is a <a href="#dimensionful-quantities">dimensionful</a> quantity of area. It defines scattering cross section of the current scatterer at \(1\,\mu m\) wavelength. The values for other wavelengths are obtained using the <a href="#angstrom-exponent"><code>angstrom exponent</code></a> parameter.</p>
+<p>This entry is a <a href="#dimensionful-quantities">dimensionful</a> quantity of area. It defines scattering cross section of the current scatterer at \(1\,\mathrm{\mu m}\) wavelength. The values for other wavelengths are obtained using the <a href="#angstrom-exponent"><code>angstrom exponent</code></a> parameter.</p>
 <h4><a class="anchor" id="angstrom-exponent"></a><code>angstrom exponent</code></h4>
 <p>This entry defines the Angström exponent, which describes the power law dependence of the optical thickness of a medium on wavelength. For Rayleigh scattering its value is 4, while for clouds it is about zero.</p>
 <h3><code>Absorber "*"</code></h3>
