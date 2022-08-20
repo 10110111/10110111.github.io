@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.0.1-379-gf44ecb0</span>
+   &#160;<span id="projectnumber">v0.0.2</span>
    </div>
   </td>
  </tr>
@@ -186,6 +186,8 @@ Save intermediate light pollution textures. </li>
 ```
 </pre><h2>Keys and values</h2>
 <p>The keys listed here are grouped by common parts of the name. The omitted parts are marked with <code>"*"</code>. A few examples of complete <code>*.atmo</code> files can be found under the <code>examples</code> directory in the source tree.</p>
+<h3><code>version</code></h3>
+<p>This entry must be the first entry in the atmosphere description file. It defines the layout of the model data and general format of the atmosphere description file. If it doesn't match the format supported by the given version of CalcMySky, an error will be emitted by <code>calcmysky</code> and <code>showmysky</code> utilities, as well as by the <code>ShowMySky</code> library.</p>
 <h3><code>atmosphere height</code></h3>
 <p>This entry is <a href="#dimensionful-quantities">dimensionful</a>. Atmosphere height is the maximum altitude at which density of some constituents of the atmosphere is considered nonzero. The sphere of all the points at this altitude is called TOA, i.e. top of atmosphere. All the textures span altitudes from 0 to atmosphere height. Valid values for this entry are length quantities from 1&#160;m to 1&#160;Mm.</p>
 <h3><code>scattering orders</code></h3>
@@ -245,12 +247,16 @@ Save intermediate light pollution textures. </li>
 <ul>
 <li><code>general</code> — the most general way of storing computation results: first-order scattering in a separate texture, split into separate textures per wavelength set, multiple scattering in another texture.</li>
 <li><code>achromatic</code> — denotes a phase function that doesn't depend on wavelength. This lets us merge all the single scattering radiance textures into a single luminance texture without compromising correctness of rendering.</li>
-<li><code>smooth</code> — a kind of phase function that doesn't need a high resolution texture to be represented well. This lets the single scattering texture to be merged into the multiple scattering texture, thus avoiding the need for extra storage.</li>
+<li><code>smooth</code> — a kind of phase function that doesn't need a high resolution texture to be represented well. This lets the phase function be embedded into the texture. Such texture data can be saved as color instead of radiance. This helps save storage space and improve rendering performance.</li>
 </ul>
 <h4><code>cross section at 1 um</code></h4>
 <p>This entry is a <a href="#dimensionful-quantities">dimensionful</a> quantity of area. It defines scattering cross section of the current scatterer at \(1\,\mathrm{\mu m}\) wavelength. The values for other wavelengths are obtained using the <a href="#angstrom-exponent"><code>angstrom exponent</code></a> parameter.</p>
 <h4><a class="anchor" id="angstrom-exponent"></a><code>angstrom exponent</code></h4>
 <p>This entry defines the Angström exponent, which describes the power law dependence of the optical thickness of a medium on wavelength. For Rayleigh scattering its value is 4, while for clouds it is about zero.</p>
+<h4><code>needs interpolation guides</code></h4>
+<p>This entry is a special token that's not a key: it isn't followed by a colon with a value.</p>
+<p>Presence of this entry means that single scattering data for the scatterer described in current section have a rapid variation of colors in the Venus belt region, which, if texture resolution is small, will look jumpy when interpolated using the usual quadrilinear filter — either when looking at a single frame (similar to aliasing of lines), or when watching the sunset (the Venus belt will jump from one elevation to the next in the texture as the Sun goes deeper under the horizon). To fix this problem, special files will be created which will guide the renderer's interpolation function to improve quality.</p>
+<p>If this entry is not present, interpolation guides are not created, so interpolation will use quadrilinear filter. This is better for performance, so should be the default.</p>
 <h3><code>Absorber "*"</code></h3>
 <p>This entry is a <a href="#sections">section</a>. Its name is formed as <code>Absorber</code> keyword followed by name of the absorbing species in quotes. The species name must consist only of alphanumeric characters and underscores and have no spaces. Inside the braces there are several key-value entries, described in the following subsections.</p>
 <h4><a class="anchor" id="absorber-number-density"></a><code>number density</code></h4>

@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.0.1-379-gf44ecb0</span>
+   &#160;<span id="projectnumber">v0.0.2</span>
    </div>
   </td>
  </tr>
@@ -81,12 +81,27 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aec1d4875432aa2c97a1fb07b18c808d8"><td class="memItemLeft" align="right" valign="top"><a id="aec1d4875432aa2c97a1fb07b18c808d8"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>EclipsedDoubleScatteringPrecomputer</b> (QOpenGLShaderProgram &amp;program, QOpenGLFunctions_3_3_Core &amp;gl, GLuint intermediateTextureName, GLuint intermediateTextureTexUnitNum, <a class="el" href="structAtmosphereParameters.html">AtmosphereParameters</a> const &amp;atmo, unsigned texSizeByViewAzimuth, unsigned texSizeByViewElevation, unsigned texSizeBySZA, unsigned texSizeByAltitude)</td></tr>
-<tr class="separator:aec1d4875432aa2c97a1fb07b18c808d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a398b7e7ccfc8a2766fee698b532bee9d"><td class="memItemLeft" align="right" valign="top"><a id="a398b7e7ccfc8a2766fee698b532bee9d"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>compute</b> (unsigned altIndex, unsigned szaIndex, double cameraAltitude, double sunZenithAngle, double moonZenithAngle, double moonAzimuthRelativeToSun, double earthMoonDistance)</td></tr>
-<tr class="separator:a398b7e7ccfc8a2766fee698b532bee9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e0b24e44f58d951c8cb3cfa2e159de9"><td class="memItemLeft" align="right" valign="top"><a id="a1e0b24e44f58d951c8cb3cfa2e159de9"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>EclipsedDoubleScatteringPrecomputer</b> (QOpenGLFunctions_3_3_Core &amp;gl, <a class="el" href="structAtmosphereParameters.html">AtmosphereParameters</a> const &amp;atmo, unsigned texSizeByViewAzimuth, unsigned texSizeByViewElevation, unsigned texSizeBySZA, unsigned texSizeByAltitude)</td></tr>
+<tr class="separator:a1e0b24e44f58d951c8cb3cfa2e159de9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad09cb9e9d142cd0f51fa33788314b0d7"><td class="memItemLeft" align="right" valign="top"><a id="ad09cb9e9d142cd0f51fa33788314b0d7"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>computeRadianceOnCoarseGrid</b> (QOpenGLShaderProgram &amp;program, GLuint intermediateTextureName, GLuint intermediateTextureTexUnitNum, double cameraAltitude, double sunZenithAngle, double moonZenithAngle, double moonAzimuthRelativeToSun, double earthMoonDistance)</td></tr>
+<tr class="separator:ad09cb9e9d142cd0f51fa33788314b0d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a560844abddf832ea1cf3e4e20497fd31"><td class="memItemLeft" align="right" valign="top"><a id="a560844abddf832ea1cf3e4e20497fd31"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>convertRadianceToLuminance</b> (glm::mat4 const &amp;radianceToLuminance)</td></tr>
+<tr class="separator:a560844abddf832ea1cf3e4e20497fd31"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81f0f61d9b8771b88094e2e69a849af3"><td class="memItemLeft" align="right" valign="top"><a id="a81f0f61d9b8771b88094e2e69a849af3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>accumulateLuminance</b> (<a class="el" href="classEclipsedDoubleScatteringPrecomputer.html">EclipsedDoubleScatteringPrecomputer</a> const &amp;source, glm::mat4 const &amp;sourceRadianceToLuminance)</td></tr>
+<tr class="separator:a81f0f61d9b8771b88094e2e69a849af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd69280742614f10d872482c4d135e2a"><td class="memItemLeft" align="right" valign="top"><a id="afd69280742614f10d872482c4d135e2a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>generateTextureFromCoarseGridData</b> (unsigned altIndex, unsigned szaIndex, double cameraAltitude)</td></tr>
+<tr class="separator:afd69280742614f10d872482c4d135e2a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfb03bc914cec205c07e4e7e20db1bfd"><td class="memItemLeft" align="right" valign="top"><a id="abfb03bc914cec205c07e4e7e20db1bfd"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>appendCoarseGridSamplesTo</b> (std::vector&lt; glm::vec4 &gt; &amp;data) const</td></tr>
+<tr class="separator:abfb03bc914cec205c07e4e7e20db1bfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8fd100890b6da95f23020ecd0054b50"><td class="memItemLeft" align="right" valign="top"><a id="ad8fd100890b6da95f23020ecd0054b50"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>loadCoarseGridSamples</b> (double cameraAltitude, glm::vec4 const *data, size_t numElements)</td></tr>
+<tr class="separator:ad8fd100890b6da95f23020ecd0054b50"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaba768f2ed33e89ebde860bd06b8acf7"><td class="memItemLeft" align="right" valign="top"><a id="aaba768f2ed33e89ebde860bd06b8acf7"></a>
 std::vector&lt; glm::vec4 &gt; const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>texture</b> () const</td></tr>
 <tr class="separator:aaba768f2ed33e89ebde860bd06b8acf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
