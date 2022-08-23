@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.0.2</span>
+   &#160;<span id="projectnumber">v0.0.2-27-g8ee4799</span>
    </div>
   </td>
  </tr>
@@ -104,9 +104,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a11c3eb63ab50dbf137a94145a8647d11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtmosphereRenderer.html#a11c3eb63ab50dbf137a94145a8647d11">initDataLoading</a> (QByteArray viewDirVertShaderSrc, QByteArray viewDirFragShaderSrc, std::vector&lt; std::pair&lt; std::string, GLuint &gt;&gt; viewDirBindAttribLocations) override</td></tr>
 <tr class="memdesc:a11c3eb63ab50dbf137a94145a8647d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize step-by-step process of loading of data.  <a href="#a11c3eb63ab50dbf137a94145a8647d11">More...</a><br /></td></tr>
 <tr class="separator:a11c3eb63ab50dbf137a94145a8647d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a43b838a2bd546a0a3de6753f268a4e5f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structShowMySky_1_1AtmosphereRenderer_1_1LoadingStatus.html">LoadingStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtmosphereRenderer.html#a43b838a2bd546a0a3de6753f268a4e5f">stepDataLoading</a> ()</td></tr>
-<tr class="memdesc:a43b838a2bd546a0a3de6753f268a4e5f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a single step of data loading.  <a href="#a43b838a2bd546a0a3de6753f268a4e5f">More...</a><br /></td></tr>
-<tr class="separator:a43b838a2bd546a0a3de6753f268a4e5f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab883a6c0ebf068f47f4ba3a5e81968e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structShowMySky_1_1AtmosphereRenderer_1_1LoadingStatus.html">LoadingStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtmosphereRenderer.html#ab883a6c0ebf068f47f4ba3a5e81968e5">stepDataLoading</a> () override</td></tr>
+<tr class="memdesc:ab883a6c0ebf068f47f4ba3a5e81968e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a single step of data loading.  <a href="#ab883a6c0ebf068f47f4ba3a5e81968e5">More...</a><br /></td></tr>
+<tr class="separator:ab883a6c0ebf068f47f4ba3a5e81968e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a01ffc3caaf58cf055c627ae9f40ec25a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtmosphereRenderer.html#a01ffc3caaf58cf055c627ae9f40ec25a">initPreparationToDraw</a> () override</td></tr>
 <tr class="memdesc:a01ffc3caaf58cf055c627ae9f40ec25a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize step-by-step process of preparation to render.  <a href="#a01ffc3caaf58cf055c627ae9f40ec25a">More...</a><br /></td></tr>
 <tr class="separator:a01ffc3caaf58cf055c627ae9f40ec25a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -591,7 +591,7 @@ Public Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
-<p>This method initializes the process of loading of shaders and textures for the current atmosphere model. The actual loading is done step-by-step by calling <a class="el" href="classAtmosphereRenderer.html#a43b838a2bd546a0a3de6753f268a4e5f" title="Perform a single step of data loading.">stepDataLoading</a>.</p>
+<p>This method initializes the process of loading of shaders and textures for the current atmosphere model. The actual loading is done step-by-step by calling <a class="el" href="classAtmosphereRenderer.html#ab883a6c0ebf068f47f4ba3a5e81968e5" title="Perform a single step of data loading.">stepDataLoading</a>.</p>
 <p>The fragment shader <code>viewDirFragShaderSrc</code> passed here implements <code>vec3 calcViewDir(void)</code> function that is used as an application-agnostic way of determining view direction of the ray associated with a given fragment of the surface being rendered.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -918,8 +918,8 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a43b838a2bd546a0a3de6753f268a4e5f"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a43b838a2bd546a0a3de6753f268a4e5f">&#9670;&nbsp;</a></span>stepDataLoading()</h2>
+<a id="ab883a6c0ebf068f47f4ba3a5e81968e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab883a6c0ebf068f47f4ba3a5e81968e5">&#9670;&nbsp;</a></span>stepDataLoading()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -936,7 +936,7 @@ Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">

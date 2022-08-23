@@ -14,7 +14,7 @@ var searchData=
   ['spectralradiance',['SpectralRadiance',['../structShowMySky_1_1AtmosphereRenderer_1_1SpectralRadiance.html',1,'ShowMySky::AtmosphereRenderer']]],
   ['spectrum',['Spectrum',['../classSpectrum.html',1,'']]],
   ['splineorder2interpolationfunction',['SplineOrder2InterpolationFunction',['../classSplineOrder2InterpolationFunction.html',1,'']]],
-  ['stepdataloading',['stepDataLoading',['../classAtmosphereRenderer.html#a43b838a2bd546a0a3de6753f268a4e5f',1,'AtmosphereRenderer::stepDataLoading()'],['../classShowMySky_1_1AtmosphereRenderer.html#ae24c7d91e27d66f55594be037480d4c7',1,'ShowMySky::AtmosphereRenderer::stepDataLoading()']]],
+  ['stepdataloading',['stepDataLoading',['../classAtmosphereRenderer.html#ab883a6c0ebf068f47f4ba3a5e81968e5',1,'AtmosphereRenderer::stepDataLoading()'],['../classShowMySky_1_1AtmosphereRenderer.html#ae24c7d91e27d66f55594be037480d4c7',1,'ShowMySky::AtmosphereRenderer::stepDataLoading()']]],
   ['steppreparationtodraw',['stepPreparationToDraw',['../classAtmosphereRenderer.html#a22303d42859fa80ce0223f1361888035',1,'AtmosphereRenderer::stepPreparationToDraw()'],['../classShowMySky_1_1AtmosphereRenderer.html#aa8ee069016fd3cd836d8322bcb58ed79',1,'ShowMySky::AtmosphereRenderer::stepPreparationToDraw()']]],
   ['stepsdone',['stepsDone',['../structShowMySky_1_1AtmosphereRenderer_1_1LoadingStatus.html#ac9ed42035309165ff4521a2a4c66eec5',1,'ShowMySky::AtmosphereRenderer::LoadingStatus']]],
   ['stepshaderreloading',['stepShaderReloading',['../classAtmosphereRenderer.html#a683ff601529c9b877991491eb4255236',1,'AtmosphereRenderer::stepShaderReloading()'],['../classShowMySky_1_1AtmosphereRenderer.html#abf879b57a9b6ea0b6370b17f36079cc3',1,'ShowMySky::AtmosphereRenderer::stepShaderReloading()']]],
