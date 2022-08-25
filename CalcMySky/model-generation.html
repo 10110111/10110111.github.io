@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.0.2-27-g8ee4799</span>
+   &#160;<span id="projectnumber">v0.0.3</span>
    </div>
   </td>
  </tr>
@@ -98,6 +98,10 @@ Save result as radiance instead of XYZW components. This lets the user change so
 <p><a class="anchor" id="no-eds-tex-option"></a> <code>--no-eds-tex</code>  </p><ul style="list-style-type: none;">
 <li>
 Don't compute/save eclipsed double scattering textures. The model generated with this option will only be able to render eclipsed atmosphere's double scattering radiance on the fly. </li>
+</ul>
+<p><code>--texture-save-precision &lt;bits&gt;</code> </p><ul style="list-style-type: none;">
+<li>
+Reduce precision of the 3D textures to the given number of bits. Valid values are from 1 to 24, the latter meaning full precision. The reduction of precision is achieved by zeroing out the least significant bits of the significand. This lets one improve compressibility of the textures at the expense of fidelity of output. </li>
 </ul>
 <h3>Debugging options</h3>
 <p>These options are not useful for a normal user, they are used by developers.</p>
