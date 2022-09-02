@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.0.4-1-g16875c4</span>
+   &#160;<span id="projectnumber">v0.0.5</span>
    </div>
   </td>
  </tr>
@@ -254,9 +254,16 @@ Save intermediate light pollution textures. </li>
 <li><code>smooth</code> — a kind of phase function that doesn't need a high resolution texture to be represented well. This lets the phase function be embedded into the texture. Such texture data can be saved as color instead of radiance. This helps save storage space and improve rendering performance.</li>
 </ul>
 <h4><code>cross section at 1 um</code></h4>
-<p>This entry is a <a href="#dimensionful-quantities">dimensionful</a> quantity of area. It defines scattering cross section of the current scatterer at \(1\,\mathrm{\mu m}\) wavelength. The values for other wavelengths are obtained using the <a href="#angstrom-exponent"><code>angstrom exponent</code></a> parameter.</p>
+<p>This entry is a <a href="#dimensionful-quantities">dimensionful</a> quantity of area. It defines extinction cross section of the current scatterer at \(1\,\mathrm{\mu m}\) wavelength. The values for other wavelengths are obtained using the <a href="#angstrom-exponent"><code>angstrom exponent</code></a> parameter.</p>
+<p>For gases Rayleigh scattering cross section can be found from refractive index using the following formula (see Landau, Lifshitz, "Electrodynamics of Continuous Media", equation \((120.4)\) for reference; we augment it with \(h=\sigma N\) to get \(\sigma\)):</p>
+<p class="formulaDsp">
+\begin{equation} \sigma_{\text{sc}}=\frac{8\pi^3}3\frac{(n^2-1)^2}{\lambda^4}\left(\frac{k_{\text{B}}T}P\right)^2, \end{equation}
+</p>
+<p>where \(n\) is refractive index, \(\lambda\) is the vacuum wavelength (taken as \(1\,\mathrm{\mu m}\) for this entry), \(k_{\text{B}}\) is the Boltzmann constant, and \(T\) and \(P\) are respectively temperature and pressure at which this refractive index was measured.</p>
 <h4><a class="anchor" id="angstrom-exponent"></a><code>angstrom exponent</code></h4>
-<p>This entry defines the Angström exponent, which describes the power law dependence of the optical thickness of a medium on wavelength. For Rayleigh scattering its value is 4, while for clouds it is about zero.</p>
+<p>This entry defines the Ångström exponent, which describes the power law dependence of the optical thickness (extinction coefficient) of a medium on wavelength. For Rayleigh scattering its value is 4, while for clouds it is about zero.</p>
+<h4><code>single scattering albedo</code></h4>
+<p>This entry is a <a href="#spectra">spectrum</a>. It defines single scattering albedo of current scatterer. Each point of this spectrum is a dimensionless value in the range from 0 to 1. If not specified, the default is albedo of 1 at each wavelength.</p>
 <h4><code>needs interpolation guides</code></h4>
 <p>This entry is a special token that's not a key: it isn't followed by a colon with a value.</p>
 <p>Presence of this entry means that single scattering data for the scatterer described in current section have a rapid variation of colors in the Venus belt region, which, if texture resolution is small, will look jumpy when interpolated using the usual quadrilinear filter — either when looking at a single frame (similar to aliasing of lines), or when watching the sunset (the Venus belt will jump from one elevation to the next in the texture as the Sun goes deeper under the horizon). To fix this problem, special files will be created which will guide the renderer's interpolation function to improve quality.</p>

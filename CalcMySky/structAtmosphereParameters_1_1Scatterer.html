@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.0.4-1-g16875c4</span>
+   &#160;<span id="projectnumber">v0.0.5</span>
    </div>
   </td>
  </tr>
@@ -86,24 +86,45 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a98778b610e690ef06a1df37d3a528135"><td class="memItemLeft" align="right" valign="top"><a id="a98778b610e690ef06a1df37d3a528135"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Scatterer</b> (QString const &amp;name)</td></tr>
-<tr class="separator:a98778b610e690ef06a1df37d3a528135"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0dc37091ad8a2f880ca91c3a39a2d9b1"><td class="memItemLeft" align="right" valign="top"><a id="a0dc37091ad8a2f880ca91c3a39a2d9b1"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>valid</b> () const</td></tr>
-<tr class="separator:a0dc37091ad8a2f880ca91c3a39a2d9b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28bcdaf0f3b292cb410ffedf8ae7adac"><td class="memItemLeft" align="right" valign="top"><a id="a28bcdaf0f3b292cb410ffedf8ae7adac"></a>
-glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><b>crossSection</b> (glm::vec4 const wavelengths) const</td></tr>
-<tr class="separator:a28bcdaf0f3b292cb410ffedf8ae7adac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a223436c495c14c3d82c1ec5e3f57b358"><td class="memItemLeft" align="right" valign="top"><a id="a223436c495c14c3d82c1ec5e3f57b358"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Scatterer</b> (QString const &amp;name, <a class="el" href="structAtmosphereParameters.html">AtmosphereParameters</a> const &amp;atmo)</td></tr>
+<tr class="separator:a223436c495c14c3d82c1ec5e3f57b358"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23dd9217e7a13f268bfe78ff979df87d"><td class="memItemLeft" align="right" valign="top"><a id="a23dd9217e7a13f268bfe78ff979df87d"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>valid</b> (const SkipSpectra spectrumSkipped) const</td></tr>
+<tr class="separator:a23dd9217e7a13f268bfe78ff979df87d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d428e7307176d7d032b2eeb30ab3ea3"><td class="memItemLeft" align="right" valign="top"><a id="a7d428e7307176d7d032b2eeb30ab3ea3"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>finalizeLoading</b> ()</td></tr>
+<tr class="separator:a7d428e7307176d7d032b2eeb30ab3ea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d61aca50b202400380c2a3dc1d53e97"><td class="memItemLeft" align="right" valign="top"><a id="a3d61aca50b202400380c2a3dc1d53e97"></a>
+glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><b>scatteringCrossSection</b> (glm::vec4 const wavelengths) const</td></tr>
+<tr class="separator:a3d61aca50b202400380c2a3dc1d53e97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fe2889e8986aedbd77076111b603d41"><td class="memItemLeft" align="right" valign="top"><a id="a5fe2889e8986aedbd77076111b603d41"></a>
+glm::vec4&#160;</td><td class="memItemRight" valign="bottom"><b>extinctionCrossSection</b> (glm::vec4 const wavelengths) const</td></tr>
+<tr class="separator:a5fe2889e8986aedbd77076111b603d41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a30057e57da15be5c361df1039108a5f1"><td class="memItemLeft" align="right" valign="top"><a id="a30057e57da15be5c361df1039108a5f1"></a>
-GLfloat&#160;</td><td class="memItemRight" valign="bottom"><b>crossSectionAt1um</b> = NAN</td></tr>
-<tr class="separator:a30057e57da15be5c361df1039108a5f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a763ba41e8d888a20d5a5aa6ae4a9263e"><td class="memItemLeft" align="right" valign="top"><a id="a763ba41e8d888a20d5a5aa6ae4a9263e"></a>
+QString&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
+<tr class="separator:a763ba41e8d888a20d5a5aa6ae4a9263e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acfd4121c7c26ec6adc7c49902e3c7cc5"><td class="memItemLeft" align="right" valign="top"><a id="acfd4121c7c26ec6adc7c49902e3c7cc5"></a>
+<a class="el" href="structAtmosphereParameters.html">AtmosphereParameters</a> const  &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>atmo</b></td></tr>
+<tr class="separator:acfd4121c7c26ec6adc7c49902e3c7cc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c3dbb38e3810645c734682a182a502e"><td class="memItemLeft" align="right" valign="top"><a id="a2c3dbb38e3810645c734682a182a502e"></a>
+GLfloat&#160;</td><td class="memItemRight" valign="bottom"><b>scatteringCrossSectionAt1um</b> = NAN</td></tr>
+<tr class="separator:a2c3dbb38e3810645c734682a182a502e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34767a9eefc6241580318928d98dab42"><td class="memItemLeft" align="right" valign="top"><a id="a34767a9eefc6241580318928d98dab42"></a>
 GLfloat&#160;</td><td class="memItemRight" valign="bottom"><b>angstromExponent</b> = NAN</td></tr>
 <tr class="separator:a34767a9eefc6241580318928d98dab42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0a743bd6c5e8d621788f9e36b62ea359"><td class="memItemLeft" align="right" valign="top"><a id="a0a743bd6c5e8d621788f9e36b62ea359"></a>
+std::vector&lt; glm::vec4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>singleScatteringAlbedo</b></td></tr>
+<tr class="separator:a0a743bd6c5e8d621788f9e36b62ea359"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace512bdf07267839b43a7f2c24fb304c"><td class="memItemLeft" align="right" valign="top"><a id="ace512bdf07267839b43a7f2c24fb304c"></a>
+std::vector&lt; glm::vec4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>extinctionCrossSection_</b></td></tr>
+<tr class="separator:ace512bdf07267839b43a7f2c24fb304c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf89600f13ecfd420c4347759ddec43f"><td class="memItemLeft" align="right" valign="top"><a id="abf89600f13ecfd420c4347759ddec43f"></a>
+std::vector&lt; glm::vec4 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>scatteringCrossSection_</b></td></tr>
+<tr class="separator:abf89600f13ecfd420c4347759ddec43f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a518f3caf104f920d14c671e25c5c4d73"><td class="memItemLeft" align="right" valign="top"><a id="a518f3caf104f920d14c671e25c5c4d73"></a>
 QString&#160;</td><td class="memItemRight" valign="bottom"><b>numberDensity</b></td></tr>
 <tr class="separator:a518f3caf104f920d14c671e25c5c4d73"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,15 +134,13 @@ QString&#160;</td><td class="memItemRight" valign="bottom"><b>phaseFunction</b><
 <tr class="memitem:acde4e39697da88d934388c2df088650c"><td class="memItemLeft" align="right" valign="top"><a id="acde4e39697da88d934388c2df088650c"></a>
 PhaseFunctionType&#160;</td><td class="memItemRight" valign="bottom"><b>phaseFunctionType</b> =PhaseFunctionType::General</td></tr>
 <tr class="separator:acde4e39697da88d934388c2df088650c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a763ba41e8d888a20d5a5aa6ae4a9263e"><td class="memItemLeft" align="right" valign="top"><a id="a763ba41e8d888a20d5a5aa6ae4a9263e"></a>
-QString&#160;</td><td class="memItemRight" valign="bottom"><b>name</b></td></tr>
-<tr class="separator:a763ba41e8d888a20d5a5aa6ae4a9263e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:add19eb9b1bb6d08d1fc9c949694ef048"><td class="memItemLeft" align="right" valign="top"><a id="add19eb9b1bb6d08d1fc9c949694ef048"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><b>needsInterpolationGuides</b> = false</td></tr>
 <tr class="separator:add19eb9b1bb6d08d1fc9c949694ef048"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<hr/>The documentation for this struct was generated from the following file:<ul>
+<hr/>The documentation for this struct was generated from the following files:<ul>
 <li>common/<a class="el" href="AtmosphereParameters_8hpp_source.html">AtmosphereParameters.hpp</a></li>
+<li>common/AtmosphereParameters.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
