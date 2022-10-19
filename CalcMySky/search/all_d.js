@@ -8,6 +8,7 @@ var searchData=
   ['showmysky_20api',['ShowMySky API',['../showmysky-api.html',1,'']]],
   ['showmysky_5fabi_5fversion',['ShowMySky_ABI_version',['../api_2AtmosphereRenderer_8hpp.html#a1d7584bed9b2ab49dabef29398262930',1,'AtmosphereRenderer.hpp']]],
   ['showmysky_5fatmosphererenderer_5fcreate',['ShowMySky_AtmosphereRenderer_create',['../api_2AtmosphereRenderer_8hpp.html#a9cb14ed91ad9de5d8578034a818b6121',1,'AtmosphereRenderer.cpp']]],
+  ['showmysky_5flib_5fname',['SHOWMYSKY_LIB_NAME',['../api_2AtmosphereRenderer_8hpp.html#a267547cb8bd4bab6d4654140a8f9af26',1,'AtmosphereRenderer.hpp']]],
   ['single_20and_20multiple_20scattering',['Single and multiple scattering',['../single-multiple-scattering.html',1,'']]],
   ['singlescatteringenabled',['singleScatteringEnabled',['../classToolsWidget.html#afd524e4073bee7a4696662fb32ac03de',1,'ToolsWidget::singleScatteringEnabled()'],['../classShowMySky_1_1Settings.html#a9efafafc5939d1485df988c90c5aa834',1,'ShowMySky::Settings::singleScatteringEnabled()']]],
   ['size',['size',['../structShowMySky_1_1AtmosphereRenderer_1_1SpectralRadiance.html#ab756446133e4a5b89e92574ed7ceb51d',1,'ShowMySky::AtmosphereRenderer::SpectralRadiance']]],

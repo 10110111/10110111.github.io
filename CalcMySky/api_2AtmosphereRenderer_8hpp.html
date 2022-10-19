@@ -112,6 +112,9 @@ Macros</h2></td></tr>
 <tr class="memitem:a1d7584bed9b2ab49dabef29398262930"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="api_2AtmosphereRenderer_8hpp.html#a1d7584bed9b2ab49dabef29398262930">ShowMySky_ABI_version</a>&#160;&#160;&#160;(13+QT_VERSION_MAJOR*100000000u)</td></tr>
 <tr class="memdesc:a1d7584bed9b2ab49dabef29398262930"><td class="mdescLeft">&#160;</td><td class="mdescRight">ABI version of the header.  <a href="#a1d7584bed9b2ab49dabef29398262930">More...</a><br /></td></tr>
 <tr class="separator:a1d7584bed9b2ab49dabef29398262930"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a267547cb8bd4bab6d4654140a8f9af26"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="api_2AtmosphereRenderer_8hpp.html#a267547cb8bd4bab6d4654140a8f9af26">SHOWMYSKY_LIB_NAME</a>&#160;&#160;&#160;&quot;ShowMySky-Qt6&quot;</td></tr>
+<tr class="memdesc:a267547cb8bd4bab6d4654140a8f9af26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of library to be dlopen()-ed.  <a href="#a267547cb8bd4bab6d4654140a8f9af26">More...</a><br /></td></tr>
+<tr class="separator:a267547cb8bd4bab6d4654140a8f9af26"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
@@ -133,6 +136,21 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>This constant denotes the ABI version of the header used at compilation time. A symbol with the same name, of type <code>uint32_t</code>, resides in the library, and is available via <code>dlsym</code>, <code>GetProcAddress</code>, <code>QLibrary::resolve</code> or a similar API provided by Qt or your OS.</p>
 <p>If the value of the symbol doesn't match the value of this constant, the library loaded is incompatible with the header against which the binary was compiled. Mixing incompatible header and library leads to undefined behavior. </p>
+
+</div>
+</div>
+<a id="a267547cb8bd4bab6d4654140a8f9af26"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a267547cb8bd4bab6d4654140a8f9af26">&#9670;&nbsp;</a></span>SHOWMYSKY_LIB_NAME</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SHOWMYSKY_LIB_NAME&#160;&#160;&#160;&quot;ShowMySky-Qt6&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>It's missing the lib prefix and .so/.dll suffix. </p>
 
 </div>
 </div>
