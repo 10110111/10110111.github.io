@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.1.0</span>
+   &#160;<span id="projectnumber">v0.3.0-4-g7c5aaa0</span>
    </div>
   </td>
  </tr>
@@ -104,6 +104,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a11c3eb63ab50dbf137a94145a8647d11"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtmosphereRenderer.html#a11c3eb63ab50dbf137a94145a8647d11">initDataLoading</a> (QByteArray viewDirVertShaderSrc, QByteArray viewDirFragShaderSrc, std::vector&lt; std::pair&lt; std::string, GLuint &gt;&gt; viewDirBindAttribLocations) override</td></tr>
 <tr class="memdesc:a11c3eb63ab50dbf137a94145a8647d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize step-by-step process of loading of data.  <a href="#a11c3eb63ab50dbf137a94145a8647d11">More...</a><br /></td></tr>
 <tr class="separator:a11c3eb63ab50dbf137a94145a8647d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a312355e92b37feae28f1fe5dd6799625"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtmosphereRenderer.html#a312355e92b37feae28f1fe5dd6799625">setViewDirShaders</a> (QByteArray viewDirVertShaderSrc, QByteArray viewDirFragShaderSrc, std::vector&lt; std::pair&lt; std::string, GLuint &gt;&gt; viewDirBindAttribLocations) override</td></tr>
+<tr class="memdesc:a312355e92b37feae28f1fe5dd6799625"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the current view direction shaders with a new set.  <a href="#a312355e92b37feae28f1fe5dd6799625">More...</a><br /></td></tr>
+<tr class="separator:a312355e92b37feae28f1fe5dd6799625"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab883a6c0ebf068f47f4ba3a5e81968e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structShowMySky_1_1AtmosphereRenderer_1_1LoadingStatus.html">LoadingStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classAtmosphereRenderer.html#ab883a6c0ebf068f47f4ba3a5e81968e5">stepDataLoading</a> () override</td></tr>
 <tr class="memdesc:ab883a6c0ebf068f47f4ba3a5e81968e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a single step of data loading.  <a href="#ab883a6c0ebf068f47f4ba3a5e81968e5">More...</a><br /></td></tr>
 <tr class="separator:ab883a6c0ebf068f47f4ba3a5e81968e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -213,7 +216,7 @@ Public Member Functions</h2></td></tr>
 <p>If an error occurs while parsing the model description file, <a class="el" href="classShowMySky_1_1Error.html" title="An error that ShowMySky classes may throw.">ShowMySky::Error</a> is thrown.</p>
 <p>The callback function <code>drawSurface</code> has one parameter: a shader program <code>shprog</code> that includes, aside from the core atmosphere model GLSL code, the shaders <code>viewDirVertShaderSrc</code> and <code>viewDirFragShaderSrc</code> that have been passed to <a class="el" href="classAtmosphereRenderer.html#a11c3eb63ab50dbf137a94145a8647d11" title="Initialize step-by-step process of loading of data.">initDataLoading</a> method (this should be done by the application before any other calls). By the point when this callback is called, <code>shprog</code> has already been bound to current OpenGL context (via <code>glUseProgram</code>).</p>
 <p>The purpose of <code>shprog</code> is to enable setting of the necessary uniform values via the <code>glUniform*</code> family of functions to make the drawing work. It also includes the <code>calcViewDir</code> function implemented in <code>viewDirVertShaderSrc</code> shader, so the necessary uniform values (if any) for the operation of <code>calcViewDir</code> should also to be set in this callback before issuing any draw calls.</p>
-<p>To create an instance of <a class="el" href="classAtmosphereRenderer.html">AtmosphereRenderer</a> indirectly having <code>dlopen</code>ed the <code>ShowMySky</code> library, use <a class="el" href="api_2AtmosphereRenderer_8hpp.html#a9cb14ed91ad9de5d8578034a818b6121" title="Entry point for the creator of AtmosphereRenderer.">ShowMySky_AtmosphereRenderer_create</a>.</p>
+<p>To create an instance of <a class="el" href="classAtmosphereRenderer.html">AtmosphereRenderer</a> indirectly having <code>dlopen</code>ed the <code>ShowMySky</code> library, use <a class="el" href="api_2ShowMySky_2AtmosphereRenderer_8hpp.html#a9cb14ed91ad9de5d8578034a818b6121" title="Entry point for the creator of AtmosphereRenderer.">ShowMySky_AtmosphereRenderer_create</a>.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">gl</td><td>QtOpenGL-provided OpenGL 3.3 function resolver; </td></tr>
@@ -915,6 +918,59 @@ Public Member Functions</h2></td></tr>
 </dl>
 
 <p>Implements <a class="el" href="classShowMySky_1_1AtmosphereRenderer.html#a24a3e255a9eeed610219dc50c1edbf59">ShowMySky::AtmosphereRenderer</a>.</p>
+
+</div>
+</div>
+<a id="a312355e92b37feae28f1fe5dd6799625"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a312355e92b37feae28f1fe5dd6799625">&#9670;&nbsp;</a></span>setViewDirShaders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void AtmosphereRenderer::setViewDirShaders </td>
+          <td>(</td>
+          <td class="paramtype">QByteArray&#160;</td>
+          <td class="paramname"><em>viewDirVertShaderSrc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QByteArray&#160;</td>
+          <td class="paramname"><em>viewDirFragShaderSrc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; std::string, GLuint &gt;&gt;&#160;</td>
+          <td class="paramname"><em>viewDirBindAttribLocations</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">override</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This method lets the user change the way view direction is computed (e.g. to switch projections). The new vertex and fragment shaders replace the old ones that initially are passed to <a class="el" href="classAtmosphereRenderer.html#a11c3eb63ab50dbf137a94145a8647d11" title="Initialize step-by-step process of loading of data.">initDataLoading</a>. This action may take some time because it causes relinking of all the shader programs in use.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">viewDirVertShaderSrc</td><td>a vertex shader that will be used by all the shader programs that implement the atmosphere model; </td></tr>
+    <tr><td class="paramname">viewDirFragShaderSrc</td><td>a fragment shader that implements <code>calcViewDir</code> function; </td></tr>
+    <tr><td class="paramname">viewDirBindAttribLocations</td><td>locations of vertex attributes necessary to render the screen surface. Each <code>pair</code> consists of an attribute name and its location. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implements <a class="el" href="classShowMySky_1_1AtmosphereRenderer.html#a48aac5c18c959854fd9268c593cbd5ec">ShowMySky::AtmosphereRenderer</a>.</p>
 
 </div>
 </div>

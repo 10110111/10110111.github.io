@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.1.0</span>
+   &#160;<span id="projectnumber">v0.3.0-4-g7c5aaa0</span>
    </div>
   </td>
  </tr>
@@ -93,9 +93,8 @@ $(function() {
 <p>This may be caused by <code>ShowMySky</code> library not having been installed (it comes with the <code>CalcMySky</code> package), or not being in the library search paths.</p>
 <p>On GNU/Linux systems <code>libShowMySky.so</code> should usually be under <code>/usr/lib</code> or <code>/usr/local/lib</code> directory tree (e.g. <code>/usr/lib/x86_64-linux-gnu/libShowMySky.so</code>, or in a non-standard directory added to <code>LD_LIBRARY_PATH</code> environment variable or listed in <code>/etc/ld.so.conf</code>.</p>
 <p>On Windows systems the library should either be in the same directory as <code>Stellarium.exe</code>, or the directory containing <code>ShowMySky.dll</code> should be listed in the <code>PATH</code> environment variable.</p>
-<h3>ABI version of ShowMySky library is 500000013, but this program has been compiled against version 600000013.</h3>
-<p>ABI version is composed of two parts: highest digit denotes the major version of Qt framework that was used to compile <code>ShowMySky</code> library: Qt5 or Qt6. If it doesn't match the one used to compile Stellarium, you'll get such an error with 5xxxxxxxx vs 6xxxxxxxx mismatch. Both Stellarium and the <code>ShowMySky</code> library must use the same major version of Qt.</p>
-<p>The second part of the ABI version, the digits after the highest one, depend on the version of <code>CalcMySky</code> package. If the <code>ShowMySky</code> library has larger value in this part of the ABI version, then Stellarium needs to be recompiled to use it. Otherwise you may need to upgrade the library. </p>
+<h3>ABI version of ShowMySky library is 14, but this program has been compiled against version 13.</h3>
+<p>If the <code>ShowMySky</code> library has larger value of the ABI version, then Stellarium needs to be recompiled to use it. Otherwise you may need to upgrade the library. A special case is when the ABI version is larger than 500000000. This corresponds to an older versioning scheme. In this case the highest digit should be omitted when comparing versions. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

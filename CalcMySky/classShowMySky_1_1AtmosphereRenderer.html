@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.1.0</span>
+   &#160;<span id="projectnumber">v0.3.0-4-g7c5aaa0</span>
    </div>
   </td>
  </tr>
@@ -113,6 +113,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a1e6e3e7f90c728eccf0e9ac3fc9aa0b7"><td class="memItemLeft" align="right" valign="top">virtual int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classShowMySky_1_1AtmosphereRenderer.html#a1e6e3e7f90c728eccf0e9ac3fc9aa0b7">initDataLoading</a> (QByteArray viewDirVertShaderSrc, QByteArray viewDirFragShaderSrc, std::vector&lt; std::pair&lt; std::string, GLuint &gt;&gt; viewDirBindAttribLocations={})=0</td></tr>
 <tr class="memdesc:a1e6e3e7f90c728eccf0e9ac3fc9aa0b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initialize step-by-step process of loading of data.  <a href="#a1e6e3e7f90c728eccf0e9ac3fc9aa0b7">More...</a><br /></td></tr>
 <tr class="separator:a1e6e3e7f90c728eccf0e9ac3fc9aa0b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a48aac5c18c959854fd9268c593cbd5ec"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classShowMySky_1_1AtmosphereRenderer.html#a48aac5c18c959854fd9268c593cbd5ec">setViewDirShaders</a> (QByteArray viewDirVertShaderSrc, QByteArray viewDirFragShaderSrc, std::vector&lt; std::pair&lt; std::string, GLuint &gt;&gt; viewDirBindAttribLocations={})=0</td></tr>
+<tr class="memdesc:a48aac5c18c959854fd9268c593cbd5ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Replace the current view direction shaders with a new set.  <a href="#a48aac5c18c959854fd9268c593cbd5ec">More...</a><br /></td></tr>
+<tr class="separator:a48aac5c18c959854fd9268c593cbd5ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae24c7d91e27d66f55594be037480d4c7"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="structShowMySky_1_1AtmosphereRenderer_1_1LoadingStatus.html">LoadingStatus</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classShowMySky_1_1AtmosphereRenderer.html#ae24c7d91e27d66f55594be037480d4c7">stepDataLoading</a> ()=0</td></tr>
 <tr class="memdesc:ae24c7d91e27d66f55594be037480d4c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Perform a single step of data loading.  <a href="#ae24c7d91e27d66f55594be037480d4c7">More...</a><br /></td></tr>
 <tr class="separator:ae24c7d91e27d66f55594be037480d4c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -869,6 +872,59 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a48aac5c18c959854fd9268c593cbd5ec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48aac5c18c959854fd9268c593cbd5ec">&#9670;&nbsp;</a></span>setViewDirShaders()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void ShowMySky::AtmosphereRenderer::setViewDirShaders </td>
+          <td>(</td>
+          <td class="paramtype">QByteArray&#160;</td>
+          <td class="paramname"><em>viewDirVertShaderSrc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">QByteArray&#160;</td>
+          <td class="paramname"><em>viewDirFragShaderSrc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::vector&lt; std::pair&lt; std::string, GLuint &gt;&gt;&#160;</td>
+          <td class="paramname"><em>viewDirBindAttribLocations</em> = <code>{}</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>This method lets the user change the way view direction is computed (e.g. to switch projections). The new vertex and fragment shaders replace the old ones that initially are passed to <a class="el" href="classShowMySky_1_1AtmosphereRenderer.html#a1e6e3e7f90c728eccf0e9ac3fc9aa0b7" title="Initialize step-by-step process of loading of data.">initDataLoading</a>. This action may take some time because it causes relinking of all the shader programs in use.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">viewDirVertShaderSrc</td><td>a vertex shader that will be used by all the shader programs that implement the atmosphere model; </td></tr>
+    <tr><td class="paramname">viewDirFragShaderSrc</td><td>a fragment shader that implements <code>calcViewDir</code> function; </td></tr>
+    <tr><td class="paramname">viewDirBindAttribLocations</td><td>locations of vertex attributes necessary to render the screen surface. Each <code>pair</code> consists of an attribute name and its location. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Implemented in <a class="el" href="classAtmosphereRenderer.html#a312355e92b37feae28f1fe5dd6799625">AtmosphereRenderer</a>.</p>
+
+</div>
+</div>
 <a id="ae24c7d91e27d66f55594be037480d4c7"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae24c7d91e27d66f55594be037480d4c7">&#9670;&nbsp;</a></span>stepDataLoading()</h2>
 
@@ -954,7 +1010,7 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following file:<ul>
-<li>ShowMySky/api/<a class="el" href="api_2AtmosphereRenderer_8hpp_source.html">AtmosphereRenderer.hpp</a></li>
+<li>ShowMySky/api/ShowMySky/<a class="el" href="api_2ShowMySky_2AtmosphereRenderer_8hpp_source.html">AtmosphereRenderer.hpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
