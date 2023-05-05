@@ -31,7 +31,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">CalcMySky
-   &#160;<span id="projectnumber">v0.3.0-4-g7c5aaa0</span>
+   &#160;<span id="projectnumber">v0.3.0-5-g8bc5cab</span>
    </div>
   </td>
  </tr>
@@ -75,8 +75,8 @@ $(function() {
 <div class="title">Using in Stellarium </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>As of this writing, upstream Stellarium doesn't have this feature merged (see upstream <a href="https://github.com/Stellarium/stellarium/issues/624">issue #624</a>). To use the ShowMySky atmosphere model, you'll need to build Stellarium from <a href="https://github.com/10110111/Stellarium/tree/showmysky"><code>showmysky</code> branch</a> of 10110111's repository (unless you already have a binary installation of it — or the feature has finally been merged upstream).</p>
-<p>Having the ShowMySky-enabled version of Stellarium, launch it, and open the <em>View</em> dialog (accessible via <code>F4</code> key), and click <em>Atmosphere settings</em> button (next to <em>Atmosphere visualization</em> checkbox). <em>Atmosphere Details</em> dialog will open, where in the <em>Choose model</em> combobox you can select either <em>Preetham</em>, which is the legacy atmosphere model, or <em>ShowMySky</em>, which is powered by this library.</p>
+<div class="textblock"><p>Stellarium supports ShowMySky atmosphere model since Stellarium v1.0. This model is available for machines capable of OpenGL 3.3.</p>
+<p>Having installed a ShowMySky-enabled version of Stellarium, launch it, open the <em>View</em> dialog (accessible via <code>F4</code> key), and click <em>Atmosphere settings</em> button (next to <em>Atmosphere visualization</em> checkbox). <em>Atmosphere Details</em> dialog will open, where in the <em>Choose model</em> combobox you can select either <em>Preetham</em>, which is the legacy atmosphere model, or <em>ShowMySky</em>, which is powered by this library.</p>
 <p>Having chosen <em>ShowMySky</em> atmosphere, select a path to the atmosphere model data directory in the <em>Path to data</em> field. The model data directory must contain <code>params.atmo</code> file. If it doesn't, it's not a model directory, or some files are missing. The path field marks the path in red if there's no <code>params.atmo</code> file in this directory, or the directory is not accessible.</p>
 <p>If loading completes successfully, a text "Loaded successfully" will appear, otherwise a red-colored error message will be displayed.</p>
 <h2>Eclipse simulation quality</h2>
