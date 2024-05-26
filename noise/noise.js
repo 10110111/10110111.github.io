@@ -236,7 +236,7 @@ window.onload = function() {
   startNoiseBtn.onclick = () => {
     if(!audioCtx) init();
 
-    const frameCount = 2**17;
+    const frameCount = 2**19;
 
     const buffer = new AudioBuffer({
       numberOfChannels: numChannels,
