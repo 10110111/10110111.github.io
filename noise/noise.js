@@ -224,67 +224,122 @@ window.onload = function() {
   const startNoiseBtn = document.querySelector("#startNoiseBtn");
   const stopNoiseBtn = document.querySelector("#stopNoiseBtn");
 
-  let audioCtx, source, gain;
-  let numChannels = 2;
+  const frameCount = 2**16;
 
-  function init() {
-    audioCtx = new AudioContext();
-    gain = audioCtx.createGain();
-    gain.connect(audioCtx.destination);
-  }
+  const updatePeriod = 2.0; // seconds
+  const numChannels = 2;
+  const totalSources = 2;
+  let audioCtx, source = [], gain = [];
+  let currentSourceIdx = 0;
+  let buffer = [];
+  let bufferCreationTimeMS;
+  let lastTimeoutId;
 
   startNoiseBtn.onclick = () => {
-    if(!audioCtx) init();
+    startNoiseBtn.disabled = true;
 
-    const frameCount = 2**19;
-
-    const buffer = new AudioBuffer({
-      numberOfChannels: numChannels,
-      length: frameCount,
-      sampleRate: audioCtx.sampleRate,
-    });
-
-    for(let channel = 0; channel < numChannels; channel++)
+    // Simply create all new objects even if it's not the first time click, since
+    // we'll need to re-create the source anyway due to the need for new buffer.
+    audioCtx = new AudioContext();
+    for(let n = 0; n < totalSources; ++n)
     {
-      const nowBuffering = buffer.getChannelData(channel);
+      gain[n] = audioCtx.createGain();
+      gain[n].connect(audioCtx.destination);
+      source[n] = audioCtx.createBufferSource();
+      source[n].loop = true;
+      source[n].connect(gain[n]);
 
-      const data = new ComplexArray(frameCount).map((value, i, n) => {
-        value.real = Math.random() * 2 - 1;
-      });
-      data.FFT();
-
-      function spectrum(freq) { return 10**(-freq/16000 + 2.65*Math.exp(-freq/1250)); }
-      data.map((fft, i, n) => {
-        const freq = audioCtx.sampleRate / n * i;
-        fft.real *= spectrum(freq);
-        fft.imag = 0;
-      });
-      const filtered = data.InvFFT();
-      let max = -1;
-      data.forEach((value, i) => {
-        if(Math.abs(value.real) > max)
-          max = Math.abs(value.real);
-      });
-
-      data.forEach((value, i) => {
-        nowBuffering[i] = value.real / max;
+      buffer[n] = new AudioBuffer({
+        numberOfChannels: numChannels,
+        length: frameCount,
+        sampleRate: audioCtx.sampleRate,
       });
     }
 
-    source = audioCtx.createBufferSource();
-    source.loop = true;
-    source.buffer = buffer;
-    source.connect(gain);
-    gain.gain.setValueAtTime(0, audioCtx.currentTime);
-    gain.gain.linearRampToValueAtTime(1, audioCtx.currentTime+2.0);
-    source.start();
+    const time0 = performance.now();
+    for(let n = 0; n < totalSources; ++n)
+      for(let channel = 0; channel < numChannels; channel++)
+        createSoundBuffer(buffer[n].getChannelData(channel));
+    const time1 = performance.now();
+    bufferCreationTimeMS = (time1-time0) / totalSources;
+
+    gain[0].gain.setValueAtTime(0, audioCtx.currentTime);
+    gain[0].gain.linearRampToValueAtTime(1, audioCtx.currentTime + updatePeriod);
+
+    gain[1].gain.setValueAtTime(0, audioCtx.currentTime);
+    gain[1].gain.setValueAtTime(0, audioCtx.currentTime + updatePeriod);
+
+    for(let n = 0; n < totalSources; ++n)
+    {
+      source[n].buffer = buffer[n];
+      source[n].start();
+    }
+
+    lastTimeoutId = window.setTimeout(updateSound, 1000*updatePeriod - bufferCreationTimeMS);
 
     stopNoiseBtn.disabled = false;
-    startNoiseBtn.disabled = true;
   };
+  function updateSound()
+  {
+    const origSourceIdx = currentSourceIdx;
+    currentSourceIdx = currentSourceIdx == 0 ? 1 : 0;
+
+    for(let channel = 0; channel < numChannels; channel++)
+      createSoundBuffer(buffer[currentSourceIdx].getChannelData(channel));
+    source[currentSourceIdx].stop();
+    source[currentSourceIdx].disconnect(gain[currentSourceIdx]);
+    source[currentSourceIdx] = audioCtx.createBufferSource();
+    source[currentSourceIdx].loop = true;
+    source[currentSourceIdx].connect(gain[currentSourceIdx]);
+    source[currentSourceIdx].buffer = buffer[currentSourceIdx];
+    source[currentSourceIdx].start();
+
+    // Simple summation of noises with linearly changing mean amplitude results
+    // in a non-constant volume of the sum, because the additive quantity here
+    // is power, which is quadratic in amplitude. So we need to modulate each
+    // amplitude as a square root, so that squaring it will yield a linear change.
+    const numAmplitudePoints = 30;
+    for(let n = 0; n < numAmplitudePoints; ++n)
+    {
+      const alpha = n / (numAmplitudePoints - 1);
+      const linearAmp0to1 = alpha;
+      const linearAmp1to0 = 1 - linearAmp0to1;
+      gain[origSourceIdx].gain.linearRampToValueAtTime(Math.sqrt(linearAmp1to0), audioCtx.currentTime + updatePeriod * alpha);
+      gain[currentSourceIdx].gain.linearRampToValueAtTime(Math.sqrt(linearAmp0to1), audioCtx.currentTime + updatePeriod * alpha);
+    }
+
+    lastTimeoutId = window.setTimeout(updateSound, 1000*updatePeriod - bufferCreationTimeMS);
+  }
+  function createSoundBuffer(bufferData)
+  {
+    const data = new ComplexArray(frameCount).map((value, i, n) => {
+      value.real = Math.random() * 2 - 1;
+    });
+    data.FFT();
+
+    function spectrum(freq) { return 10**(-freq/16000 + 2.65*Math.exp(-freq/1250)); }
+    data.map((fft, i, n) => {
+      const freq = audioCtx.sampleRate / n * i;
+      fft.real *= spectrum(freq);
+      fft.imag = 0;
+    });
+    const filtered = data.InvFFT();
+    let max = -1;
+    data.forEach((value, i) => {
+      if(Math.abs(value.real) > max)
+        max = Math.abs(value.real);
+    });
+
+    data.forEach((value, i) => {
+      bufferData[i] = value.real / max;
+    });
+  }
   stopNoiseBtn.onclick = () => {
-    source.stop();
     stopNoiseBtn.disabled = true;
+    if(lastTimeoutId)
+      window.clearTimeout(lastTimeoutId);
+    for(let n = 0; n < totalSources; ++n)
+      source[n].stop();
     startNoiseBtn.disabled = false;
   };
 }
