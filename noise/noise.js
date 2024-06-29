@@ -310,6 +310,8 @@ window.onload = function() {
 
     lastTimeoutId = window.setTimeout(updateSound, 1000*updatePeriod - bufferCreationTimeMS);
   }
+
+  let maxDataValue = 0;
   function createSoundBuffer(bufferData)
   {
     const data = new ComplexArray(frameCount).map((value, i, n) => {
@@ -324,14 +326,16 @@ window.onload = function() {
       fft.imag = 0;
     });
     const filtered = data.InvFFT();
-    let max = -1;
-    data.forEach((value, i) => {
-      if(Math.abs(value.real) > max)
-        max = Math.abs(value.real);
-    });
+    if(!maxDataValue)
+    {
+      data.forEach((value, i) => {
+        if(Math.abs(value.real) > maxDataValue)
+          maxDataValue = Math.abs(value.real);
+      });
+    }
 
     data.forEach((value, i) => {
-      bufferData[i] = value.real / max;
+      bufferData[i] = value.real / maxDataValue;
     });
   }
   stopNoiseBtn.onclick = () => {
