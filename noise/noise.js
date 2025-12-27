@@ -322,7 +322,7 @@ window.onload = function() {
     function spectrum(freq) { return 10**(-freq/16000 + 2.65*Math.exp(-freq/1250)); }
     data.map((fft, i, n) => {
       const freq = audioCtx.sampleRate / n * i;
-      fft.real *= spectrum(freq);
+      fft.real *= spectrum(audioCtx.sampleRate/2 - Math.abs(freq - audioCtx.sampleRate/2));
       fft.imag = 0;
     });
     const filtered = data.InvFFT();
