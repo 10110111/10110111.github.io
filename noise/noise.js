@@ -228,7 +228,7 @@ window.onload = function() {
 
   const updatePeriod = 2.0; // seconds
   const numChannels = 2;
-  const totalSources = 2;
+  const totalSources = 3;
   let audioCtx, source = [], gain = [];
   let currentSourceIdx = 0;
   let buffer = [];
@@ -266,8 +266,11 @@ window.onload = function() {
     gain[0].gain.setValueAtTime(0, audioCtx.currentTime);
     gain[0].gain.linearRampToValueAtTime(1, audioCtx.currentTime + updatePeriod);
 
-    gain[1].gain.setValueAtTime(0, audioCtx.currentTime);
-    gain[1].gain.setValueAtTime(0, audioCtx.currentTime + updatePeriod);
+    for(let n = 1; n < totalSources; ++n)
+    {
+      gain[n].gain.setValueAtTime(0, audioCtx.currentTime);
+      gain[n].gain.setValueAtTime(0, audioCtx.currentTime + updatePeriod);
+    }
 
     for(let n = 0; n < totalSources; ++n)
     {
@@ -282,7 +285,7 @@ window.onload = function() {
   function updateSound()
   {
     const origSourceIdx = currentSourceIdx;
-    currentSourceIdx = currentSourceIdx == 0 ? 1 : 0;
+    currentSourceIdx = (currentSourceIdx + 1) % totalSources;
 
     for(let channel = 0; channel < numChannels; channel++)
       createSoundBuffer(buffer[currentSourceIdx].getChannelData(channel));
